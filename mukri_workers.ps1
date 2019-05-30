@@ -35,6 +35,7 @@ function add-user {
     }
     else {
         new-ADUser -Name "$eesnimi $perenimi" -Enabled:$true -GivenName $eesnimi -Surname $perenimi -SamAccountName $account -UserPrincipalName $principal  -AccountPassword (ConvertTo-SecureString "Passw0rd!" -AsPlainText -Force) -ChangePasswordAtLogon:$true -path "OU=$OU1, OU=$OU2, OU=$OU3, DC=mukri, DC=sise"
+        Add-ADGroupMember "$roll" $account
     }
 }
 
